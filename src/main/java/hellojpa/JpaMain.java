@@ -23,17 +23,22 @@ public class JpaMain {
 
         try{
             //비영속 상태.
-            Member member = new Member();
-            member.setId(100L);
-            member.setName("HEEELLO");
+//            Member member = new Member();
+//            member.setId(100L);
+//            member.setName("HEEELLO");
+//
+//            //영속 상태.
+//            em.persist(member);
+//
+//            // 1차 캐시상태
+//            Member findMember = em.find(Member.class, 100L);
+//            System.out.println("findMember.id : " + findMember.getId());
+//            System.out.println("findMember.name : " + findMember.getName());
 
-            //영속 상태.
-            em.persist(member);
+            Member findMember1 = em.find(Member.class, 100L);
+            Member findMember2 = em.find(Member.class, 100L);
 
-            // 1차 캐시상태
-            Member findMember = em.find(Member.class, 100L);
-            System.out.println("findMember.id : " + findMember.getId());
-            System.out.println("findMember.name : " + findMember.getName());
+            System.out.println("result : " + (findMember1 == findMember2));
 
 
             tx.commit();
