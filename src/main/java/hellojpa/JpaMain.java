@@ -30,6 +30,12 @@ public class JpaMain {
             //영속 상태.
             em.persist(member);
 
+            // 1차 캐시상태
+            Member findMember = em.find(Member.class, 100L);
+            System.out.println("findMember.id : " + findMember.getId());
+            System.out.println("findMember.name : " + findMember.getName());
+
+
             tx.commit();
         }catch (Exception e){
             tx.rollback();
